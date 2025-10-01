@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Us - Capital Engineers & Manufacturers</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div><a href="index.html">Home</a></div>
+    <div><a href="About.html">About Us</a></div>
+    <div><a href="gallery.html">Gallery</a></div>
+    <div><a href="payment.html">Payment</a></div>
+    <div><a href="contact.html">Contact Us</a></div>
+  </header>
+
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p>Fill out the form below and send us your query directly on WhatsApp:</p>
+
+    <!-- Contact Form -->
+    <input type="text" id="name" placeholder="Your Name">
+    <input type="text" id="phone" placeholder="Your Phone Number">
+    <textarea id="message" placeholder="Your Message"></textarea>
+
+    <!-- Send Button -->
+    <button onclick="sendContact()">Send on WhatsApp</button>
+
+    <p class="note">(This will open WhatsApp with a pre-filled message to us)</p>
+  </div>
+
+  <script>
+    function sendContact() {
+      let name = document.getElementById("name").value.trim();
+      let phone = document.getElementById("phone").value.trim();
+      let message = document.getElementById("message").value.trim();
+
+      if (name === "" || phone === "" || message === "") {
+        alert("Please fill all fields before sending");
+        return;
+      }
+
+      // 🔹 Replace with your WhatsApp business number
+      let businessPhone = "919804162506";
+
+      // WhatsApp message
+      let finalMessage = `Hello, my name is ${name}.\n📞 Phone: ${phone}\n\nMessage: ${message}\n\n- Capital Engineers & Manufacturers`;
+
+      // Open WhatsApp
+      let url = `https://wa.me/${businessPhone}?text=${encodeURIComponent(finalMessage)}`;
+      window.open(url, "_blank");
+    }
+  </script>
+</body>
+</html>

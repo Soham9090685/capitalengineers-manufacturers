@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment - Capital Engineers & Manufacturers</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+      <header>
+            <div>
+                <a href="index.html">Home</a>
+            </div>
+            <div>
+                <a href="About.html">About Us</a>
+            </div>
+            <div>
+                <a href="gallery.html">Gallery</a>
+            </div>
+            <div>
+            <a href="payment.html">Payment</a>
+        </div>
+        <div>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </header>
+
+  <div class="container">
+    <h2>Send Payment Request</h2>
+    <p>Enter the amount you want to pay, then click Send on WhatsApp:</p>
+
+    <!-- Amount input -->
+    <input type="number" id="amount" placeholder="Enter Amount (₹)">
+
+    <!-- Send button -->
+    <button onclick="sendWhatsApp()">Send on WhatsApp</button>
+
+    <p class="note">(This will open WhatsApp with a pre-filled message to us)</p>
+  </div>
+
+  <script>
+    function sendWhatsApp() {
+      let amount = document.getElementById("amount").value.trim();
+
+      if (amount === "" || amount <= 0) {
+        alert("Please enter a valid amount");
+        return;
+      }
+
+      // 🔹 Replace with your real WhatsApp number (include country code, e.g. 91 for India)
+      let businessPhone = "919804162506";  
+
+      // WhatsApp message (only phone + amount, no UPI)
+      let message = `Hello, I would like to make a payment of ₹${amount}. Please confirm how to proceed.\n\n- Capital Engineers & Manufacturers`;
+
+      // Open WhatsApp with pre-filled message
+      let url = `https://wa.me/${businessPhone}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+    }
+  </script>
+</body>
+</html>
